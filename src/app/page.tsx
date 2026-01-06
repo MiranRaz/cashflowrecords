@@ -8,43 +8,67 @@ interface LinkItem {
 
 const links: LinkItem[] = [
   {
-    title: "Instagram",
-    url: "https://instagram.com/cashflowrecords",
-    description: "Follow us for behind-the-scenes content",
+    title: "Spotify",
+    url: "https://open.spotify.com/artist/21qJshnWk8F3ZhYw2Q4IEM",
+    description: "Listen to the latest from Arula",
   },
   {
-    title: "Twitter / X",
-    url: "https://twitter.com/cashflowrecords",
-    description: "Stay updated with our latest news",
+    title: "Apple Music",
+    url: "https://music.apple.com/us/artist/arula/1827666894",
+    description: "Stream Arula on Apple Music",
   },
   {
     title: "YouTube",
-    url: "https://youtube.com/@cashflowrecords",
-    description: "Watch our music videos and sessions",
+    url: "https://www.youtube.com/@CASHFLOW-t5k",
+    description: "Watch our official music videos",
   },
   {
-    title: "Spotify",
-    url: "https://spotify.com/artist/cashflowrecords",
-    description: "Listen to our latest releases",
+    title: "Instagram",
+    url: "https://instagram.com/neverr_easy",
+    description: "@neverr_easy",
   },
   {
-    title: "Official Website",
-    url: "https://cashflowrecords.vercel.app",
-    description: "Visit our main hub",
+    title: "TikTok",
+    url: "https://tiktok.com/@neverr_easy",
+    description: "@neverr_easy",
   },
 ];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-6 sm:p-8 font-sans transition-colors duration-500">
-      <main className="flex w-full max-w-md flex-col items-center gap-10">
+    <div className="relative min-h-screen flex flex-col items-center justify-center p-6 sm:p-8 font-sans overflow-hidden">
+      {/* Background Banner */}
+      <div className="fixed inset-0 z-0">
+        <Image
+          src="/banner.png"
+          alt="Cash Flow Records Banner"
+          fill
+          priority
+          className="object-cover"
+        />
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+      </div>
+
+      <main className="relative z-10 flex w-full max-w-md flex-col items-center gap-10">
         <div className="flex flex-col items-center gap-4 text-center">
-          <div className="h-28 w-28 overflow-hidden rounded-full bg-zinc-900 text-white flex items-center justify-center shadow-xl ring-4 ring-white dark:ring-zinc-800">
-             <span className="text-4xl font-black">CF</span>
+          {/* Profile Picture */}
+          <div className="relative h-32 w-32 overflow-hidden rounded-full border-4 border-white shadow-2xl dark:border-zinc-800">
+            <Image
+              src="/profile.png"
+              alt="Cash Flow Records Profile"
+              fill
+              className="object-cover"
+            />
           </div>
+          
           <div className="space-y-1">
-            <h1 className="text-3xl font-black tracking-tighter">CASH FLOW RECORDS</h1>
-            <p className="text-zinc-500 dark:text-zinc-400 font-medium">Record Label & Media Production</p>
+            <h1 className="text-3xl font-black tracking-tighter text-white drop-shadow-md">
+              CASH FLOW RECORDS
+            </h1>
+            <p className="text-zinc-300 font-medium drop-shadow-sm">
+              Record Label & Media Production
+            </p>
           </div>
         </div>
 
@@ -55,21 +79,17 @@ export default function Home() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex w-full flex-col items-center justify-center rounded-2xl border border-zinc-200 bg-white/80 backdrop-blur-sm p-5 text-center transition-all hover:scale-[1.02] hover:bg-white hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900/80 dark:hover:bg-zinc-900 dark:hover:shadow-zinc-900/20"
+              className="group flex w-full flex-col items-center justify-center rounded-2xl border border-white/10 bg-white/10 backdrop-blur-md p-5 text-center text-white transition-all hover:scale-[1.02] hover:bg-white/20 hover:shadow-xl"
             >
               <span className="text-lg font-bold tracking-tight">{link.title}</span>
               {link.description && (
-                <span className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">{link.description}</span>
+                <span className="text-sm text-zinc-300 font-medium">{link.description}</span>
               )}
             </a>
           ))}
         </div>
 
-        <div className="flex gap-4">
-           {/* Placeholder for social icons if needed */}
-        </div>
-
-        <footer className="mt-4 text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-600">
+        <footer className="mt-4 text-xs font-bold uppercase tracking-widest text-zinc-400">
           © {new Date().getFullYear()} Cash Flow Records
         </footer>
       </main>
