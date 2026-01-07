@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/carpe-omnia",
-        destination: "/releases/carpe-omnia/",
+        destination: "/en/releases/carpe-omnia/",
         permanent: true,
       },
     ];

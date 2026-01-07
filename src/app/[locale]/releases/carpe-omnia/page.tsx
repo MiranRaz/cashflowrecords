@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useLanguage } from "@/components/LanguageContext";
 
 interface StreamingLink {
   platform: string;
@@ -18,7 +18,7 @@ const streamingLinks: StreamingLink[] = [
 ];
 
 const lyrics = {
-  bosnian: `CARPE OMNIA
+  bs: `CARPE OMNIA
 
 Verse 1 (ARULA)
 Upozno sam kuje što ne vole bez keša
@@ -69,7 +69,7 @@ Buran dan burna godina
 Burna noć insomnia
 Ruši me bol padam ko domina
 Buran život carpe omnia`,
-  german: `CARPE OMNIA
+  de: `CARPE OMNIA
 
 Verse 1 (ARULA)
 Ich habe Bitches getroffen, die ohne Geld nicht lieben
@@ -120,7 +120,7 @@ Stürmischer Tag, stürmisches Jahr
 Stürmische Nacht, Insomnia
 Der Schmerz reißt mich nieder, ich falle wie ein Domino
 Stürmisches Leben, carpe omnia`,
-  english: `CARPE OMNIA
+  en: `CARPE OMNIA
 
 Verse 1 (ARULA)
 I've met girls who don't love without cash
@@ -161,7 +161,7 @@ When will I finally get it straight?
 Walking relaxed with drug money and a few carats.
 
 Zizou, I reload the Milly and protect my Haq.
-Every day I'm out here, Zizou, look – the Caliweed is just packed.
+Every day I'm on the street, Zizou, look – the Caliweed is just packed.
 Zizou, I reload the nine and Zizou, I protect my Haq.
 No matter what she needs from me – Zizou, yes, I have it.
 Every day I'm on the street and Zizou, look – I shoot them down.
@@ -173,10 +173,14 @@ Pain breaks me, I fall like a domino
 Stormy life, carpe omnia`,
 };
 
-type Language = "bosnian" | "german" | "english";
-
 export default function CarpeOmniaRelease() {
-  const [lang, setLang] = useState<Language>("bosnian");
+  const { language, setLanguage, t } = useLanguage();
+  const [activeLyrics, setActiveLyrics] = useState(language);
+
+  // Sync lyrics language with global language on initial load or change
+  useEffect(() => {
+    setActiveLyrics(language);
+  }, [language]);
 
   const scrollToLyrics = () => {
     const element = document.getElementById("lyrics-section");
@@ -220,11 +224,12 @@ export default function CarpeOmniaRelease() {
           onClick={scrollToLyrics}
           className="group flex items-center justify-center gap-2 rounded-full border-2 border-white bg-white px-8 py-3 text-sm font-black uppercase tracking-widest text-black transition-all hover:bg-transparent hover:text-white"
         >
-          TEXT / LYRICS
+          {t("btn_lyrics")}
         </button>
 
         {/* Streaming Links (Linktree Style) */}
         <div className="flex w-full flex-col gap-3">
+          <h3 className="text-center text-[10px] font-black uppercase tracking-[0.4em] text-zinc-500 mb-2">{t("streaming_links_title")}</h3>
           {streamingLinks.map((link) => (
             <a
               key={link.platform}
@@ -253,15 +258,18 @@ export default function CarpeOmniaRelease() {
           {/* Lyrics Language Selection */}
           <div className="flex flex-col items-center gap-8 w-full">
             <div className="flex gap-4">
-              {(["bosnian", "german", "english"] as Language[]).map((l) => (
+              {(["bs", "de", "en"] as const).map((l) => (
                 <button
                   key={l}
-                  onClick={() => setLang(l)}
+                  onClick={() => {
+                    setActiveLyrics(l);
+                    setLanguage(l); // Optional: also sync global language
+                  }}
                   className={`px-4 py-2 text-xs font-black uppercase tracking-[0.2em] transition-all border-b-2 ${
-                    lang === l ? "border-white text-white" : "border-transparent text-zinc-500 hover:text-zinc-300"
+                    activeLyrics === l ? "border-white text-white" : "border-transparent text-zinc-500 hover:text-zinc-300"
                   }`}
                 >
-                  {l === "bosnian" ? "BOS" : l === "german" ? "GER" : "ENG"}
+                  {l === "bs" ? "BOS" : l === "de" ? "GER" : "ENG"}
                 </button>
               ))}
             </div>
@@ -269,7 +277,7 @@ export default function CarpeOmniaRelease() {
             {/* Lyrics Display Area */}
             <div className="w-full rounded-2xl border border-white/10 bg-white/5 p-8 text-center">
               <pre className="whitespace-pre-wrap font-sans text-sm font-medium leading-relaxed tracking-wide text-zinc-300">
-                {lyrics[lang]}
+                {lyrics[activeLyrics]}
               </pre>
             </div>
           </div>
@@ -282,4 +290,3 @@ export default function CarpeOmniaRelease() {
     </div>
   );
 }
-

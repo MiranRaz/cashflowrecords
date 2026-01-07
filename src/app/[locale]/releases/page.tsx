@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/components/LanguageContext";
 
 interface ReleaseItem {
   title: string;
@@ -9,17 +12,19 @@ interface ReleaseItem {
   coverImage: string;
 }
 
-const releases: ReleaseItem[] = [
-  {
-    title: "CARPE OMNIA",
-    artist: "ARULA x ZZ",
-    date: "2026",
-    url: "#",
-    coverImage: "/carpeomniacover.png",
-  },
-];
-
 export default function Releases() {
+  const { t, language } = useLanguage();
+
+  const releases: ReleaseItem[] = [
+    {
+      title: "CARPE OMNIA",
+      artist: "ARULA x ZZ",
+      date: "2026",
+      url: `/${language}/releases/carpe-omnia/`,
+      coverImage: "/carpeomniacover.png",
+    },
+  ];
+
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-start p-6 pt-24 sm:p-8 sm:pt-24 font-sans overflow-hidden bg-black text-white">
       {/* Background Banner */}
@@ -39,10 +44,10 @@ export default function Releases() {
         <div className="flex flex-col items-center gap-4 text-center">
           <div className="space-y-1">
             <h1 className="text-5xl font-black tracking-tighter drop-shadow-lg uppercase italic">
-              RELEASES
+              {t("releases_title")}
             </h1>
-            <p className="text-zinc-200 font-semibold drop-shadow-md tracking-wide">
-              LATEST FROM CASH FLOW RECORDS
+            <p className="text-zinc-200 font-semibold drop-shadow-md tracking-wide uppercase">
+              {t("releases_subtitle")}
             </p>
           </div>
         </div>
@@ -51,7 +56,7 @@ export default function Releases() {
           {releases.map((release) => (
             <Link
               key={release.title}
-              href="/releases/carpe-omnia"
+              href={release.url}
               className="group flex flex-col items-center rounded-2xl border border-white/30 bg-black/50 backdrop-blur-lg p-6 text-center transition-all hover:scale-[1.02] hover:bg-white/10 hover:border-white/60 hover:shadow-2xl"
             >
               <div className="relative h-48 w-48 mb-4 overflow-hidden rounded-lg border-2 border-white/20 shadow-xl">
@@ -80,4 +85,3 @@ export default function Releases() {
     </div>
   );
 }
-

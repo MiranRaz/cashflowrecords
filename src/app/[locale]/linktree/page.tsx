@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/components/LanguageContext";
 
 interface LinkItem {
   title: string;
@@ -34,7 +37,9 @@ const links: LinkItem[] = [
   },
 ];
 
-export default function Home() {
+export default function Linktree() {
+  const { t } = useLanguage();
+
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center p-6 sm:p-8 font-sans overflow-hidden bg-black text-white">
       {/* Background Banner */}
@@ -67,8 +72,8 @@ export default function Home() {
             <h1 className="text-3xl font-black tracking-tighter drop-shadow-lg uppercase italic">
               CASH FLOW RECORDS
             </h1>
-            <p className="text-zinc-200 font-semibold drop-shadow-md tracking-wide">
-              LINKTREE
+            <p className="text-zinc-200 font-semibold drop-shadow-md tracking-wide uppercase">
+              {t("nav_linktree")}
             </p>
           </div>
         </div>
