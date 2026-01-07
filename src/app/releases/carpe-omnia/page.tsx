@@ -243,7 +243,7 @@ export default function CarpeOmniaRelease() {
           <div className="w-full max-w-md aspect-video overflow-hidden rounded-2xl border-2 border-white/10 shadow-2xl">
             <iframe
               className="h-full w-full"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Placeholder
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
