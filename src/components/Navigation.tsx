@@ -32,6 +32,7 @@ export default function Navigation() {
     { name: t("nav_home"), href: `/${language}/` },
     { name: t("nav_linktree"), href: `/${language}/linktree/` },
     { name: t("nav_releases"), href: `/${language}/releases/` },
+    { name: t("nav_lyrics"), href: `/${language}/lyrics/` },
   ];
 
   const isActive = (href: string) => {

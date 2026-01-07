@@ -62,13 +62,22 @@ export const translations: Translations = {
   // Linktree Page
   linktree_subtitle: { en: "OFFICIAL LINKS", de: "OFFIZIELLE LINKS", bs: "ZVANIČNI LINKOVI" },
   
+  // Navigation
+  nav_lyrics: { en: "LYRICS", de: "SONGTEXTE", bs: "TEKSTOVI" },
+  
   // Releases Page
   releases_title: { en: "RELEASES", de: "RELEASES", bs: "RELEASES" },
   releases_subtitle: { en: "LATEST FROM CASH FLOW RECORDS", de: "NEUES VON CASH FLOW RECORDS", bs: "NAJNOVIJE OD CASHFLOW RECORDS" },
 
   // Carpe Omnia Page
   btn_lyrics: { en: "TEXT / LYRICS", de: "SONGTEXT", bs: "TEKST" },
-  streaming_links_title: { en: "STREAM NOW", de: "JETZT STREAMEN", bs: "SLUŠAJ SADA" }
+  streaming_links_title: { en: "STREAM NOW", de: "JETZT STREAMEN", bs: "SLUŠAJ SADA" },
+
+  // Shared / Helpers
+  back_to_releases: { en: "← BACK TO RELEASES", de: "← ZURÜCK ZU RELEASES", bs: "← NAZAD NA RELEASES" },
+  back_to_lyrics: { en: "← BACK TO LYRICS", de: "← ZURÜCK ZU SONGTEXTEN", bs: "← NAZAD NA TEKSTOVE" },
+  lyrics_and_video: { en: "LYRICS & VIDEO", de: "SONGTEXT & VIDEO", bs: "TEKST I VIDEO" },
+  browse_lyrics: { en: "BROWSE SONG TEXTS & VIDEOS", de: "SONGTEXTE & VIDEOS DURCHSUCHEN", bs: "PREGLEDAJ TEKSTOVE I VIDEO SNIMKE" },
 };
 
 interface LanguageContextType {
