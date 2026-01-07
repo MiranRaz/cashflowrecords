@@ -68,7 +68,7 @@ export default function Home() {
               CASH FLOW RECORDS
             </h1>
             <p className="text-zinc-200 font-semibold drop-shadow-md tracking-wide">
-              RECORD LABEL & MEDIA PRODUCTION
+              LINKTREE
             </p>
           </div>
         </div>
